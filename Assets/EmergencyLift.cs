@@ -25,13 +25,29 @@ public class EmergencyLift : MonoBehaviour
                 DeployBroccoli();
             }
         }
+        else if (Physics.Raycast(transform.position, Vector3.up, distance))
+        {
+            if (deployed)
+            {
+                DeployBroccoli2();
+            }
+        }
 
     }
 
+    // Inverts the gravity
     void DeployBroccoli()
     {
         Debug.Log("It's deployed");
         deployed = true;
         Physics.gravity = new Vector3(0, 3, 0);
+    }
+
+    // Reverts the gravity
+    void DeployBroccoli2()
+    {
+        Debug.Log("It's deployed");
+        deployed = false;
+        Physics.gravity = new Vector3(0, -6, 0);
     }
 }
