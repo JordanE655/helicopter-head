@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface PlayerInput
-{
-    void InputHandling(GameObject arg);
+{ 
+    float GetAxisX();
+    float GetAxisY();
+    bool GetFlightHeld();
+    bool GetFlightDown();
 }

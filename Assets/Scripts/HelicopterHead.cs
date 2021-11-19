@@ -5,6 +5,8 @@ using UnityEngine;
 public class HelicopterHead : MonoBehaviour
 {
     public PlayerInput playerInput;
+    private PlayerPhysics playerPhysics;
+    public GameObject heliHead;
 
     // Start is called before the first frame update
     void Start()
@@ -16,12 +18,18 @@ public class HelicopterHead : MonoBehaviour
         {
             playerInput = new WindowsPlayerInput();
         }
+        playerPhysics = new PlayerPhysics();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerInput.InputHandling(this.gameObject);
+        playerPhysics.HeadHandling(heliHead, playerInput);
+    }
+
+    private void FixedUpdate()
+    {
+        playerPhysics.FlightHandling(GetComponent<Rigidbody>(), playerInput);
     }
 }
