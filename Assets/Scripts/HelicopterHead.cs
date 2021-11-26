@@ -16,7 +16,7 @@ public class HelicopterHead : MonoBehaviour
         // maybe in the awake method, we define an enum which can decide which device you're on
         if (true)
         {
-            playerInput = new WindowsPlayerInput();
+            playerInput = new OculusPlayerInput();
         }
         playerPhysics = new PlayerPhysics();
         
