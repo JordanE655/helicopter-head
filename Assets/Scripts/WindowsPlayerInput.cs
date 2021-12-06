@@ -5,6 +5,15 @@ using UnityEngine;
 public class WindowsPlayerInput : PlayerInput
 {
 
+    public void InitializeInput(GameObject gam)
+    {
+
+    }
+    public void RotateHead(GameObject head )
+    {
+
+    }
+
     public float GetAxisX()
     {
         //replace all of these with objects?
@@ -17,11 +26,21 @@ public class WindowsPlayerInput : PlayerInput
 
     public bool GetFlightHeld()
     {
-        return Input.GetButton("Jump");
+        return Input.GetButton("Jump") || Input.GetMouseButton(0);
     }
 
     public bool GetFlightDown()
     {
-        return Input.GetButtonDown("Jump");
+        return Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0);
+    }
+
+    public bool GetFlightUp()
+    {
+        return Input.GetButtonUp("Jump") || Input.GetMouseButtonUp(0);
+    }
+
+    public bool IsMobile()
+    {
+        return false;
     }
 }

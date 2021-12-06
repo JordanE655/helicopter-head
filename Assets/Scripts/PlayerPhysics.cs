@@ -9,43 +9,78 @@ public class PlayerPhysics : ScriptableObject
 
     private float yaw = 0.0f;
     private float pitch = 0.0f;
-    private float burstSpeed = 0f;
+    public float charge = 0f;
+    public float wind = 1.5f;
+    bool unreleased;
+
+    public Vector3 capturePoint;
+    public GameObject captureObject;
 
     // Using the player's input, changes the tilt of the head (and therefore the camera)
     // Also sets yaw and pitch
     public void HeadHandling(GameObject heliHead, PlayerInput inputFloats)
     {
-        yaw += speedH * inputFloats.GetAxisX();
-        yaw = yaw % 360f;
-        pitch += speedV * inputFloats.GetAxisY();
+        if (inputFloats.IsMobile())
+        {
+            inputFloats.RotateHead(heliHead);
+        }
+        else
+        {
+            yaw += speedH * inputFloats.GetAxisX();
+            yaw = yaw % 360f;
+            pitch += speedV * inputFloats.GetAxisY();
 
-        heliHead.transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+            heliHead.transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+        }
+        
     }
 
     // Using the player's input, changes the speed and flight of the character
-    public void FlightHandling(Rigidbody heliBod, PlayerInput playerInput)
+    public float FlightHandling(Vector3 direction, Rigidbody heliBod, PlayerInput playerInput)
     {
-
+        direction = Vector3.Normalize(direction);
         if (playerInput.GetFlightDown())
         {
-            burstSpeed = 5f;
+            if (wind >= .5f)
+            {
+                charge = 0f;
+            }
+            heliBod.useGravity = false;
+            heliBod.drag = 3f;
+            unreleased = true;
+
+            //
         }
         if (playerInput.GetFlightHeld())
         {
-            burstSpeed = (burstSpeed / 2f) + .5f;
-            // Advanced Math including checks to the direction you're facing
-            // also use time.timescale
-            //heliBod.velocity = new Vector3(heliBod.velocity.x, heliBod.velocity.y + .5f, heliBod.velocity.z);
+            if (unreleased)
+            {
+                if (wind >= Time.deltaTime)
+                {
+                    charge += Time.deltaTime;
+                } else
+                {
+                    charge += wind;
+                }
+                
+            }
             
-
-            var boostx = Mathf.Sin(yaw * Mathf.Deg2Rad);
-            var boostz = Mathf.Cos(yaw* Mathf.Deg2Rad);
-            Debug.Log("boostx is " + boostx);
-            Debug.Log("boostz is " + boostz);
-            heliBod.velocity = new Vector3(heliBod.velocity.x + burstSpeed * -boostx, heliBod.velocity.y + .5f, heliBod.velocity.z + burstSpeed * -boostz);
-        } else
-        {
-            heliBod.velocity = new Vector3(heliBod.velocity.x, heliBod.velocity.y, heliBod.velocity.z);
+            
         }
+        if (charge >= wind || playerInput.GetFlightUp())
+        {
+            heliBod.useGravity = true;
+            heliBod.drag = 0f;
+            unreleased = false;
+            wind -= charge;
+            Debug.LogError("This was true");
+            // 1.5 is max charge on full wind (0-100?)
+            // maybe charge happpens in chunks of .3
+            // 5 units of wind?
+            float returnable = .3f * charge;
+            charge = 0;
+            return returnable;
+        }
+        return 0f;
     }
 }

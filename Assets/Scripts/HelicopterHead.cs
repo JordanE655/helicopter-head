@@ -7,6 +7,8 @@ public class HelicopterHead : MonoBehaviour
     public PlayerInput playerInput;
     private PlayerPhysics playerPhysics;
     public GameObject heliHead;
+    public float x, y, z, w;
+    public GameObject pointer;
 
     // Start is called before the first frame update
     void Start()
@@ -14,12 +16,19 @@ public class HelicopterHead : MonoBehaviour
         // Asks which device is being used (maybe this shouldn't be handled in the Helicopter Head class)
         // if android, playerInput = new AndroidPlayerInput();
         // maybe in the awake method, we define an enum which can decide which device you're on
-        if (true)
+        if (Application.platform == RuntimePlatform.WindowsPlayer)
+        {
+            playerInput = new WindowsPlayerInput();
+        } else if ( Application.platform == RuntimePlatform.Android)
         {
             playerInput = new OculusPlayerInput();
+            playerInput.InitializeInput(gameObject);
+        } else
+        {
+            playerInput = new WindowsPlayerInput();
         }
         playerPhysics = new PlayerPhysics();
-        
+
     }
 
     // Update is called once per frame
@@ -30,6 +39,61 @@ public class HelicopterHead : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playerPhysics.FlightHandling(GetComponent<Rigidbody>(), playerInput);
+        Vector3 tryHard = Vector3.Normalize(new Vector3(pointer.transform.position.x - transform.position.x, 0f, pointer.transform.position.z - transform.position.z));
+        Debug.Log(tryHard);
+        float chargeTime = playerPhysics.FlightHandling(heliHead.transform.localRotation.eulerAngles, GetComponent<Rigidbody>(), playerInput);
+        if (chargeTime > 0f)
+        {
+            
+            StartCoroutine(superDash(tryHard, chargeTime));
+        }
+    }
+
+
+    // Look at how much this deals directly with wind. This would be hard to trace and edit. Consider decoupling
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.layer == 9)
+        {
+            playerPhysics.wind += 1.5f * Time.deltaTime;
+            if (playerPhysics.wind >= 1.5f)
+            {
+                playerPhysics.wind = 1.5f;
+            }
+        }
+    }
+
+    //This feels like a physics thing but whatever
+    IEnumerator superDash(Vector3 tums, float chargeTime)
+    {
+        // suspend execution for 5 seconds
+        float startTime = 0;
+        Rigidbody rigid = GetComponent<Rigidbody>();
+
+        Vector3 dashVelocity = new Vector3(Vector3.Normalize(tums).x * 13f, Vector3.Normalize(tums).y * 5f, Vector3.Normalize(tums).z * 13f);
+        Debug.Log(dashVelocity);
+        while (startTime <= chargeTime)
+        {
+            Debug.Log(rigid.velocity);
+            dashVelocity = new Vector3(
+                Vector3.MoveTowards(dashVelocity, new Vector3(0f, 20f, 0f), 30f * Time.deltaTime).x,
+                Vector3.MoveTowards(dashVelocity, new Vector3(0f, 12f, 0f), 20f* Time.deltaTime).y,
+                Vector3.MoveTowards(dashVelocity, new Vector3(0f, 20f, 0f), 30f * Time.deltaTime).z
+                );
+            rigid.velocity = dashVelocity;
+            startTime += Time.deltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        print("Honestly Tried " + Time.time);
+        
+    }
+
+    public float GetCharge()
+    {
+        return playerPhysics.charge;
+    }
+    public float GetWind()
+    {
+        return playerPhysics.wind;
     }
 }
