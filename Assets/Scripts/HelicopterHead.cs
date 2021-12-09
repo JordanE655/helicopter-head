@@ -40,7 +40,6 @@ public class HelicopterHead : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 tryHard = Vector3.Normalize(new Vector3(pointer.transform.position.x - transform.position.x, 0f, pointer.transform.position.z - transform.position.z));
-        Debug.Log(tryHard);
         float chargeTime = playerPhysics.FlightHandling(heliHead.transform.localRotation.eulerAngles, GetComponent<Rigidbody>(), playerInput);
         if (chargeTime > 0f)
         {
@@ -77,7 +76,7 @@ public class HelicopterHead : MonoBehaviour
             Debug.Log(rigid.velocity);
             dashVelocity = new Vector3(
                 Vector3.MoveTowards(dashVelocity, new Vector3(0f, 20f, 0f), 30f * Time.deltaTime).x,
-                Vector3.MoveTowards(dashVelocity, new Vector3(0f, 12f, 0f), 20f* Time.deltaTime).y,
+                Vector3.MoveTowards(dashVelocity, new Vector3(0f, 16f, 0f), 20f* Time.deltaTime).y, // used to be 12
                 Vector3.MoveTowards(dashVelocity, new Vector3(0f, 20f, 0f), 30f * Time.deltaTime).z
                 );
             rigid.velocity = dashVelocity;

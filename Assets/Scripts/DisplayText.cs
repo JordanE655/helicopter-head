@@ -5,17 +5,18 @@ using UnityEngine;
 public class DisplayText : MonoBehaviour
 {
     public HelicopterHead heli;
-    private UnityEngine.UI.Text text;
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-        text = GetComponent<UnityEngine.UI.Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //replace this with an event!!!
-        text.text = (heli.GetCharge().ToString() + " charge and " + heli.GetWind().ToString() + " wind");
+        Debug.Log(heli.GetWind());
+        anim.Play("UI Clip", 0, heli.GetWind()/1.5f);
+        //anim["UI Clip"].time = heli.GetWind();
     }
 }
