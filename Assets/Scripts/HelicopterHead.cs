@@ -43,7 +43,7 @@ public class HelicopterHead : MonoBehaviour
         float chargeTime = playerPhysics.FlightHandling(heliHead.transform.localRotation.eulerAngles, GetComponent<Rigidbody>(), playerInput);
         if (chargeTime > 0f)
         {
-            
+            HelicopterEvents.instance.BoostTriggered();
             StartCoroutine(superDash(tryHard, chargeTime));
         }
     }
@@ -69,15 +69,16 @@ public class HelicopterHead : MonoBehaviour
         float startTime = 0;
         Rigidbody rigid = GetComponent<Rigidbody>();
 
-        Vector3 dashVelocity = new Vector3(Vector3.Normalize(tums).x * 13f, Vector3.Normalize(tums).y * 5f, Vector3.Normalize(tums).z * 13f);
+        Vector3 dashVelocity = new Vector3(Vector3.Normalize(tums).x * 20f, Vector3.Normalize(tums).y * 5f, Vector3.Normalize(tums).z * 20f);
         Debug.Log(dashVelocity);
         while (startTime <= chargeTime)
         {
             Debug.Log(rigid.velocity);
+
             dashVelocity = new Vector3(
-                Vector3.MoveTowards(dashVelocity, new Vector3(0f, 20f, 0f), 30f * Time.deltaTime).x,
+                Vector3.MoveTowards(dashVelocity, new Vector3(0f, 20f, 0f), 50f * Time.deltaTime).x,
                 Vector3.MoveTowards(dashVelocity, new Vector3(0f, 16f, 0f), 20f* Time.deltaTime).y, // used to be 12
-                Vector3.MoveTowards(dashVelocity, new Vector3(0f, 20f, 0f), 30f * Time.deltaTime).z
+                Vector3.MoveTowards(dashVelocity, new Vector3(0f, 20f, 0f), 50f * Time.deltaTime).z
                 );
             rigid.velocity = dashVelocity;
             startTime += Time.deltaTime;
@@ -94,5 +95,17 @@ public class HelicopterHead : MonoBehaviour
     public float GetWind()
     {
         return playerPhysics.wind;
+    }
+    public float GetWindForUI()
+    {
+        var physo = playerPhysics.wind/1.5f;
+        if (physo >= 1f)
+        {
+            physo = 0.99f;
+        } else if (physo <= 0f)
+        {
+            physo = 0f;
+        }
+        return physo;
     }
 }

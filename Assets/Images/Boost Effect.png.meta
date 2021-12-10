@@ -1,34 +1,31 @@
 fileFormatVersion: 2
-guid: d15612082df3eac4a81dcea3e931d0b6
+guid: f3c3b1d6c3fd6e743b5da6f36ee29331
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 21300000
-    second: the cheese - Copy_0
+      213: 745877931926772798
+    second: Boost Effect_0
   - first:
-      213: 21300002
-    second: the cheese - Copy_1
+      213: -975770569660445643
+    second: Boost Effect_1
   - first:
-      213: 21300004
-    second: the cheese - Copy_2
+      213: 1416685731875355849
+    second: Boost Effect_2
   - first:
-      213: 21300006
-    second: the cheese - Copy_3
+      213: 7607860082006260085
+    second: Boost Effect_3
   - first:
-      213: 21300008
-    second: the cheese - Copy_4
+      213: -1435223953950362297
+    second: Boost Effect_4
   - first:
-      213: 21300010
-    second: the cheese - Copy_5
+      213: 2108830921958759170
+    second: Boost Effect_5
   - first:
-      213: 21300012
-    second: the cheese - Copy_6
+      213: -2727780234106928381
+    second: Boost Effect_6
   - first:
-      213: 21300014
-    second: the cheese - Copy_7
-  - first:
-      213: 21300016
-    second: the cheese - Copy_8
+      213: -6779963769040646632
+    second: Boost Effect_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -58,7 +55,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,52 +72,88 @@ TextureImporter:
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
-  alphaUsage: 2
+  alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 1
-    textureFormat: 7
-    textureCompression: 3
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
-    resizeAlgorithm: 1
-    textureFormat: 7
-    textureCompression: 3
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: the cheese - Copy_0
+      name: Boost Effect_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 213.33334
-        width: 150
-        height: 106.666664
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 962c3861d91c3984d93f31cb502df18f
-      internalID: 21300000
+      spriteID: e3c5c4af604e95a00800000000000000
+      internalID: 745877931926772798
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the cheese - Copy_1
+      name: Boost Effect_1
       rect:
         serializedVersion: 2
-        x: 150
-        y: 213.33334
-        width: 150
-        height: 106.666664
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0ad236f81575ae43a8e0540399b0179
-      internalID: 21300002
+      spriteID: 53ccb1536dd5572f0800000000000000
+      internalID: -975770569660445643
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the cheese - Copy_2
+      name: Boost Effect_2
       rect:
         serializedVersion: 2
-        x: 300
-        y: 213.33334
-        width: 150
-        height: 106.666664
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,83 +203,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc0f44a9456c90748a53dd2d44f684d6
-      internalID: 21300004
+      spriteID: 9cc7bceca2419a310800000000000000
+      internalID: 1416685731875355849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the cheese - Copy_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 107.333336
-        width: 150
-        height: 106.666664
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9d0bbdbf63107214a81197dcedb90591
-      internalID: 21300006
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the cheese - Copy_4
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 107.333336
-        width: 150
-        height: 106.666664
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2c8f6a60c62b9214e9df84eb2df09a88
-      internalID: 21300008
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the cheese - Copy_5
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 107.333336
-        width: 150
-        height: 106.666664
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c1fa55f1aeade0349b30d7187ef339e9
-      internalID: 21300010
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the cheese - Copy_6
+      name: Boost Effect_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 1.3333359
-        width: 150
-        height: 106.666664
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -254,20 +224,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac7366b919c90d845bdf0ff4b4c7d5c5
-      internalID: 21300012
+      spriteID: 5797bd8bf6c849960800000000000000
+      internalID: 7607860082006260085
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the cheese - Copy_7
+      name: Boost Effect_4
       rect:
         serializedVersion: 2
-        x: 150
-        y: 1.3333359
-        width: 150
-        height: 106.666664
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -275,20 +245,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81cb01eee837599458143b4c6730cebf
-      internalID: 21300014
+      spriteID: 74538a30b6f051ce0800000000000000
+      internalID: -1435223953950362297
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the cheese - Copy_8
+      name: Boost Effect_5
       rect:
         serializedVersion: 2
-        x: 300
-        y: 1.3333359
-        width: 150
-        height: 106.666664
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -296,20 +266,58 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 079040c92c419a840905c919a0b4c3fd
-      internalID: 21300016
+      spriteID: 20b16baec82144d10800000000000000
+      internalID: 2108830921958759170
       vertices: []
       indices: 
       edges: []
       weights: []
-    outline:
-    - - {x: -225, y: 160}
-      - {x: -225, y: -160}
-      - {x: 225, y: -160}
-      - {x: 225, y: 160}
+    - serializedVersion: 2
+      name: Boost Effect_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30389b8545af42ad0800000000000000
+      internalID: -2727780234106928381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boost Effect_7
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81e4054bfdab8e1a0800000000000000
+      internalID: -6779963769040646632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
     physicsShape: []
     bones: []
-    spriteID: eaa4f8ad26c2ba742ac04e19baf32bd5
+    spriteID: 532a57731175963409c2507412749975
     internalID: 0
     vertices: []
     indices: 

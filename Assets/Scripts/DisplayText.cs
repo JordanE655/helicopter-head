@@ -9,14 +9,22 @@ public class DisplayText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        HelicopterEvents.instance.myFirstAction += BoostUI;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //replace this with an event!!!
         Debug.Log(heli.GetWind());
-        anim.Play("UI Clip", 0, heli.GetWind()/1.5f);
-        //anim["UI Clip"].time = heli.GetWind();
+        // This is constant, but maybe it should be called with an event ? ?? ? 
+        anim.Play("UI Clip", 0, heli.GetWindForUI());
+        anim.Play("UI Clip Fill", 2, heli.GetCharge() / 1.5f);
+    }
+
+    //Event-based code we'll use events to call! 
+    public void BoostUI()
+    {
+        anim.SetTrigger("Boost");
     }
 }
