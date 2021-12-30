@@ -39,7 +39,15 @@ public class OculusPlayerInput : PlayerInput
         head.transform.localRotation = gyro.attitude;
     }
 
+    public bool GetPause()
+    {
+        return Input.GetButtonDown("Submit");
+    }
 
+    public void SetCursor()
+    {
+
+    }
 
     public float GetAxisX()
     {

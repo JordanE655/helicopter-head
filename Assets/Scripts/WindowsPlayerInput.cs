@@ -7,11 +7,34 @@ public class WindowsPlayerInput : PlayerInput
 
     public void InitializeInput(GameObject gam)
     {
-
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public void RotateHead(GameObject head )
     {
 
+    }
+
+    public bool GetPause()
+    {
+        if (Input.GetButtonDown("Submit"))
+        {
+            Debug.LogError(Input.GetButtonDown("Submit"));
+        }
+        
+        return Input.GetButtonDown("Submit");
+    }
+
+    public void SetCursor()
+    {
+        Cursor.visible = !Cursor.visible;
+        if (Cursor.visible)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        } else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     public float GetAxisX()

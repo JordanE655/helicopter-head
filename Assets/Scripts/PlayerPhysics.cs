@@ -32,6 +32,11 @@ public class PlayerPhysics : ScriptableObject
 
             heliHead.transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
         }
+
+        if (inputFloats.GetPause())
+        {
+            inputFloats.SetCursor();
+        }
         
     }
 
@@ -73,7 +78,6 @@ public class PlayerPhysics : ScriptableObject
             heliBod.drag = 0f;
             unreleased = false;
             wind -= charge;
-            Debug.LogError("This was true");
             // 1.5 is max charge on full wind (0-100?)
             // maybe charge happpens in chunks of .3
             // 5 units of wind?

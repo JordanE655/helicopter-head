@@ -6,6 +6,7 @@ public class HelicopterHead : MonoBehaviour
 {
     public PlayerInput playerInput;
     private PlayerPhysics playerPhysics;
+    public Animator playerAnim;
     public GameObject heliHead;
     public float x, y, z, w;
     public GameObject pointer;
@@ -19,6 +20,7 @@ public class HelicopterHead : MonoBehaviour
         if (Application.platform == RuntimePlatform.WindowsPlayer)
         {
             playerInput = new WindowsPlayerInput();
+            playerInput.InitializeInput(gameObject);
         } else if ( Application.platform == RuntimePlatform.Android)
         {
             playerInput = new OculusPlayerInput();
@@ -44,12 +46,25 @@ public class HelicopterHead : MonoBehaviour
         if (chargeTime > 0f)
         {
             HelicopterEvents.instance.BoostTriggered();
+            playerAnim.SetTrigger("Boost");
             StartCoroutine(superDash(tryHard, chargeTime));
         }
     }
 
 
     // Look at how much this deals directly with wind. This would be hard to trace and edit. Consider decoupling
+    public void OnTriggerEnter(Collider other)
+    {
+        var windCheck = other.GetComponent<WindBox>();
+        if (windCheck != null)
+        {
+            if (windCheck.FillWind())
+            {
+                playerPhysics.wind = 1.5f;
+            }
+        }
+    }
+
     public void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == 9)
