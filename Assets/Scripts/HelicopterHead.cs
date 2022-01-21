@@ -10,6 +10,12 @@ public class HelicopterHead : MonoBehaviour
     public GameObject heliHead;
     public float x, y, z, w;
     public GameObject pointer;
+    public float xzBase;
+    public float yBase;
+    public float xzRate;
+    public float yRate;
+    public float xzGoal;
+    public float yGoal;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +47,7 @@ public class HelicopterHead : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 tryHard = Vector3.Normalize(new Vector3(pointer.transform.position.x - transform.position.x, 0f, pointer.transform.position.z - transform.position.z));
+        Vector3 tryHard = Vector3.Normalize(new Vector3(pointer.transform.position.x - transform.position.x, pointer.transform.position.y - transform.position.y, pointer.transform.position.z - transform.position.z));
         float chargeTime = playerPhysics.FlightHandling(heliHead.transform.localRotation.eulerAngles, GetComponent<Rigidbody>(), playerInput);
         if (chargeTime > 0f)
         {
@@ -83,20 +89,22 @@ public class HelicopterHead : MonoBehaviour
         // suspend execution for 5 seconds
         float startTime = 0;
         Rigidbody rigid = GetComponent<Rigidbody>();
-
-        Vector3 dashVelocity = new Vector3(Vector3.Normalize(tums).x * 20f, Vector3.Normalize(tums).y * 5f, Vector3.Normalize(tums).z * 20f);
+        Debug.Log(tums);
+        Vector3 dashVelocity = new Vector3(Vector3.Normalize(tums).x * xzBase, Vector3.Normalize(tums).y * yBase, Vector3.Normalize(tums).z * xzBase);
         Debug.Log(dashVelocity);
+        float yRateRate = 0f;
         while (startTime <= chargeTime)
         {
             Debug.Log(rigid.velocity);
 
             dashVelocity = new Vector3(
-                Vector3.MoveTowards(dashVelocity, new Vector3(0f, 20f, 0f), 50f * Time.deltaTime).x,
-                Vector3.MoveTowards(dashVelocity, new Vector3(0f, 16f, 0f), 20f* Time.deltaTime).y, // used to be 12
-                Vector3.MoveTowards(dashVelocity, new Vector3(0f, 20f, 0f), 50f * Time.deltaTime).z
+                Vector3.MoveTowards(dashVelocity, new Vector3(xzGoal * tums.x, 0f, 0f), xzRate * Time.deltaTime).x,
+                Vector3.MoveTowards(dashVelocity, new Vector3(0f, yGoal, 0f), yRateRate  * Time.deltaTime).y, // used to be 12
+                Vector3.MoveTowards(dashVelocity, new Vector3(0f, 0f, xzGoal * tums.z), xzRate * Time.deltaTime).z
                 );
             rigid.velocity = dashVelocity;
             startTime += Time.deltaTime;
+            yRateRate = yRate * startTime;
             yield return new WaitForFixedUpdate();
         }
         print("Honestly Tried " + Time.time);

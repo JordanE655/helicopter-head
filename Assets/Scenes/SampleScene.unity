@@ -5602,7 +5602,13 @@ MonoBehaviour:
   y: 0
   z: -90
   w: 0
-  pointer: {fileID: 1307823046}
+  pointer: {fileID: 1469963705}
+  xzBase: 20
+  yBase: 8
+  xzRate: 50
+  yRate: 50
+  xzGoal: 8
+  yGoal: 20
 --- !u!54 &1070614337
 Rigidbody:
   m_ObjectHideFlags: 0
